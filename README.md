@@ -13,9 +13,16 @@ This repository holds all resources used in the attainment of the goals establis
 # 
 
 # Need to Haves
+- Predict whether a customer will churn
+- Features:
+    - tenure
+    - contract_type
+    - 
 
 
 # Nice to Haves
+- Rate of churn (customers churned/total customers)
+    - {for exploration, not model}
 
 
 
