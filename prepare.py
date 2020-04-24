@@ -42,9 +42,9 @@ def prep_telco(df):
     
     # clean total_charges
     df = clean_total_charges(df)
-    
-    # removing unnecessary variables
-    # df.drop(columns=[], inplace=True)
+
+    # consolidate columns
+    df = consolidate_columns(df)
     
     # splitting df into train and test
     train, test = train_test_split(df, random_state=56, train_size=.8)
