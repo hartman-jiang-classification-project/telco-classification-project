@@ -47,10 +47,10 @@ def prep_telco(df):
     df = consolidate_columns(df)
     
     # splitting df into train and test
-    train, test = train_test_split(df, random_state=56, train_size=.8)
+    train, test = train_test_split(df, random_state=56, train_size=.8, stratify=df.churn)
     
     # splitting train into train and validate
-    train, validate = train_test_split(train, random_state=56, train_size=.75)
+    train, validate = train_test_split(train, random_state=56, train_size=.75, stratify=train.churn)
 
     # calculating tenure years rounded
     train = calc_tenure_years(train["tenure"], train, rounding=True)
