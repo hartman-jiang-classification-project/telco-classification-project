@@ -63,5 +63,8 @@ def prep_telco(df):
 
     # calculating tenure years rounded
     train = calc_tenure_years(train["tenure"], train, rounding=True)
+
+    # encode churn
+    encoder, train, validate, test = encode_churn(train, validate, test)
     
     return train, validate, test
