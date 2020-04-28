@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler, MinMaxScaler
 
 def clean_total_charges(df):
     """
@@ -38,6 +39,14 @@ def calc_tenure_years(tenure, df, rounding=False):
         df["tenure_years"] = np.round(tenure // 12)
         return df
 
+def encode_churn(train, validate, test):
+    encoder = LabelEncoder()
+    encoder.fit(train[["churn"]])
+    train["churn"] = encoder.transform(train[["churn"]])
+    validate["churn"] = encoder.transform(validate[["churn"]])
+    test["churn"] = encoder.transform(test[["churn"]])
+    return encoder, train, validate, test
+
 def prep_telco(df):
     
     # clean total_charges
@@ -54,5 +63,8 @@ def prep_telco(df):
 
     # calculating tenure years rounded
     train = calc_tenure_years(train["tenure"], train, rounding=True)
+
+    # encode churn
+    encoder, train, validate, test = encode_churn(train, validate, test)
     
     return train, validate, test
