@@ -20,5 +20,4 @@ This repository holds all resources used in the attainment of the goals establis
     - model.py
 4. A presentation in the form of [Google slides](https://docs.google.com/presentation/d/1hjDQED2eNU-k_RryLbJG70J1u-wI8Lm08Jd-mGUlmBM/edit?usp=sharing)
 
-
 ## Nice to Haves
