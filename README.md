@@ -9,7 +9,7 @@ This repository holds all resources used in the attainment of the goals establis
 3. Create a summary [presentation](https://docs.google.com/presentation/d/1hjDQED2eNU-k_RryLbJG70J1u-wI8Lm08Jd-mGUlmBM/edit?usp=sharing) describing the drivers of churn.
 
 ## Instructions for Cloning
-- All files necessary for the replication of the analysis in zillow_project_pipeline.ipynb are contained within this repository.
+- All files necessary for the replication of the analysis in master_project_pipeline.ipynb are contained within this repository.
 
 ## Need to Haves
 1. A report in the form of a jupyter notebook
