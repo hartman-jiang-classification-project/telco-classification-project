@@ -6,23 +6,22 @@ This repository holds all resources used in the attainment of the goals establis
 ## Research Question: Why are our customers churning?
 
 ## Goals
-- Determine drivers of churn
- 
+- Determine the drivers of churn
+- Create a model to predict churn for each customer
+- 
 
-
-# 
-
-# Need to Haves
-- Predict whether a customer will churn
-- Features:
-    - tenure
-    - contract_type
-    - 
+## Need to Haves
+- A report in the form of a jupyter notebook
+- A .csv file that predicts churn for each customer using our best model
+- Python scripts for replicability
+    - acquire.py
+    - prepare.py
+    - model.py
+- A presentation in the form of [Google slides](https://docs.google.com/presentation/d/1hjDQED2eNU-k_RryLbJG70J1u-wI8Lm08Jd-mGUlmBM/edit?usp=sharing)
 
 
 # Nice to Haves
-- Rate of churn (customers churned/total customers)
-    - {for exploration, not model}
+
 
 
 
