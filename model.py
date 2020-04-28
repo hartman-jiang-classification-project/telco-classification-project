@@ -21,6 +21,8 @@ def model_and_prediction():
     y_train = train[y]
     X_test = test[X]
     y_test = test[y]
+    #scale the whole dataset
+    df[["tenure", "monthly_charges"]] = scaler.transform(df[["tenure", "monthly_charges"]])
     # create a model trained from train dataset
     rf = RandomForestClassifier(bootstrap=True, 
                             class_weight=None, 
@@ -35,10 +37,15 @@ def model_and_prediction():
                                     'monthly_charges',
                                     'contract_type_id',
                                     'senior_citizen']])
+    #Show prediction of each customer
+    df["probability"]= rf.predict_proba(df[['tenure',
+                    'monthly_charges',
+                    'contract_type_id',
+                    'senior_citizen']])[:, 1]
     # encode int to string
     df['predicted'] = df.predicted.apply(lambda x: 'Yes' if x == 1 else 'No')
     # Select columns for csv file
     df = df.rename(columns = {'churn': 'actual'})
-    df = df[['customer_id','actual','predicted']]
+    df = df[['customer_id','actual','predicted', "probability"]]
     # write dataframe to a csv file
     df.to_csv('prediction.csv')
