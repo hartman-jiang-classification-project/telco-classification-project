@@ -47,6 +47,14 @@ def encode_churn(train, validate, test):
     test["churn"] = encoder.transform(test[["churn"]])
     return encoder, train, validate, test
 
+def min_max_scaler(train, validate, test):
+    scaler = MinMaxScaler()
+    scaler.fit(train[["tenure", "monthly_charges"]])
+    train[["tenure", "monthly_charges"]] = scaler.transform(train[["tenure", "monthly_charges"]])
+    validate[["tenure", "monthly_charges"]] = scaler.transform(validate[["tenure", "monthly_charges"]])
+    test[["tenure", "monthly_charges"]] = scaler.transform(test[["tenure", "monthly_charges"]])
+    return scaler, train, validate, test
+
 def prep_telco(df):
     
     # clean total_charges
@@ -67,4 +75,4 @@ def prep_telco(df):
     # encode churn
     encoder, train, validate, test = encode_churn(train, validate, test)
     
-    return train, validate, test
+    return encoder, train, validate, test
