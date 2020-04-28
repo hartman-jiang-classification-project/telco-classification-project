@@ -1,10 +1,26 @@
-import pandas as pd 
-import numpy as np
-
+import pandas as pd
+from env import url
+import os.path
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
-from acquire import acquire_data
+from sklearn.preprocessing import MinMaxScaler  
 
+def telco_data():
+    query = '''
+        SELECT *
+        FROM customers
+    '''
+    df = pd.read_sql(query, url('telco_churn'))
+    df.to_csv('telco_churn_1.csv')
+    return df
+
+#check if there is a csv file, if not run squl query
+def acquire_data():
+    if os.path.exists('telco_churn_1.csv'):
+        df = pd.read_csv('telco_churn_1.csv', index_col=0)
+    else:
+        df = telco_data()
+    return df
+                         
 def encoder(x):
     if x == 'Yes':
         return 1
@@ -41,4 +57,4 @@ def scale_data(train, validate, test):
     train[["tenure", "monthly_charges"]] = scaler.transform(train[["tenure", "monthly_charges"]])
     validate[["tenure", "monthly_charges"]] = scaler.transform(validate[["tenure", "monthly_charges"]])
     test[["tenure", "monthly_charges"]] = scaler.transform(test[["tenure", "monthly_charges"]])
-    return scaler, train, validate, test
+    return scaler, train, validate, test                       
