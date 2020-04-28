@@ -1,8 +1,13 @@
 import pandas as pd
-from env import url
+from env import host, user, password
 import os.path
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler  
+
+def url(db_name):
+    from env import host, user, password
+    url = f'mysql+pymysql://{user}:{password}@{host}/{db_name}'
+    return url
 
 def telco_data():
     query = '''
