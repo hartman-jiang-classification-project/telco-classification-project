@@ -51,9 +51,9 @@ def prep_data():
         df[i] = df[i].apply(encoder)
     return df
 
-def split_data(df, size = .8):
-    train, test = train_test_split(df, train_size = size, random_state=123)
-    train, validate = train_test_split(train, train_size = size, random_state = 123)
+def split_data(df):
+    train, test = train_test_split(df, random_state=56, train_size=.8, stratify=df.churn)
+    train, validate = train_test_split(train, random_state=56, train_size=.75, stratify=train.churn)
     return train, validate, test
     
 def scale_data(train, validate, test):
